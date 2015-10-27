@@ -1,0 +1,26 @@
+---
+
+- name: (Debian) get sbt deb...
+  when: ansible_os_family == "Debian"
+  get_url: url='{{sbt_deb_url}}' dest='/tmp/{{sbt_deb_name}}'
+
+- name: (Debian) install sbt deb...
+  when: ansible_os_family == "Debian"
+  apt: deb='/tmp/{{sbt_deb_name}}' state=installed
+
+- name: (RedHat) install sbt...
+  when: ansible_os_family == "RedHat"
+  yum: name='{{sbt_rpm_url}}' state=present
+
+- name: Download Typesafe Activator
+  get_url: url={{ typesafe_activator_url }} dest="/tmp/{{ typesafe_activator_archive }}"
+
+- stat: path='/opt/activator-dist-{{ typesafe_activator_version }}'
+  register: activatordir
+
+- name: Unzip Typesafe Activator
+  when: activatordir.stat.exists == false
+  unarchive: copy=no src='/tmp/{{ typesafe_activator_archive }}' dest=/opt
+
+- name: Link Typesafe Activator
+  file: src='/opt/activator-dist-{{ typesafe_activator_version }}' dest=/opt/activator state=link

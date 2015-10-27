@@ -1,0 +1,11 @@
+---
+sbt_ver : '0.13.9'
+sbt_deb_name : 'sbt-{{sbt_ver}}.deb'
+sbt_deb_url : 'http://dl.bintray.com/sbt/debian/{{sbt_deb_name}}'
+sbt_rpm_name : 'sbt-{{sbt_ver}}.rpm'
+sbt_rpm_url : 'https://dl.bintray.com/sbt/rpm/{{sbt_rpm_name}}'
+
+
+typesafe_activator_version : "1.3.5"
+typesafe_activator_archive : "typesafe-activator-{{ typesafe_activator_version }}.zip"
+typesafe_activator_url : "http://downloads.typesafe.com/typesafe-activator/{{ typesafe_activator_version }}/{{ typesafe_activator_archive }}"
