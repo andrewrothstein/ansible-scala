@@ -1,0 +1,28 @@
+---
+- name: get tgz
+  get_url: url='{{sbt_native_tgz_url}}' dest='/tmp/{{sbt_native_tgz}}'
+
+- name: mkdir /opt/sbt-XXX
+  file: >-
+    path='/opt/{{sbt_name}}'
+    owner=root
+    group=root
+    mode=0755
+    state=directory
+  
+- name: inflate/install
+  unarchive: copy=no src='/tmp/{{sbt_native_tgz}}' dest='/opt/{{sbt_name}}'
+
+- name: link /opt/sbt
+  file: >-
+    src=/opt/{{sbt_name}}
+    dest=/opt/sbt
+    state=link
+
+- name: include sbt in the PATH
+  copy: >-
+    src=etc/profile.d/sbt.sh
+    dest=/etc/profile.d/sbt.sh
+    mode=0644
+    owner=root
+    group=root

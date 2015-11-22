@@ -1,0 +1,4 @@
+---
+sbt_ver : '0.13.9'
+sbt_mirror : 'http://dl.bintray.com/sbt'
+sbt_native: True

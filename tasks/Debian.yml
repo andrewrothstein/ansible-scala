@@ -1,0 +1,9 @@
+---
+- name: (Debian) get sbt deb...
+  when: ansible_os_family == "Debian"
+  get_url: url='{{sbt_deb_url}}' dest='/tmp/{{sbt_deb_name}}'
+
+- name: (Debian) install sbt deb...
+  when: ansible_os_family == "Debian"
+  apt: deb='/tmp/{{sbt_deb_name}}' state=installed
+
