@@ -1,1 +1,2 @@
-export PATH=$PATH:/opt/sbt/sbt/bin
+export PATH=$PATH:/opt/sbt/bin
+

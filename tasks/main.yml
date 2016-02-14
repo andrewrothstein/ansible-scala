@@ -1,12 +1,39 @@
 ---
-- name: (Debian) install...
-  when: not sbt_native and ansible_os_family == 'Debian'
-  include: Debian.yml
+- name: get tgz
+  get_url: >
+    url={{sbt_native_tgz_url}}
+    dest=/tmp/{{sbt_native_tgz}}
+    owner=root
+    group=root
+    mode=0644
 
-- name: (RedHat) install...
-  when: not sbt_native and ansible_os_family == 'RedHat'
-  include: RedHat.yml
+- name: mkdir /opt/sbt-XXX
+  file: >-
+    path=/opt/{{sbt_name}}
+    owner=root
+    group=root
+    mode=0755
+    state=directory
   
-- name: (Native) install...
-  when: sbt_native
-  include:  Native.yml
+- name: inflate/install
+  unarchive: >
+    copy=no
+    src=/tmp/{{sbt_native_tgz}}
+    dest=/opt/{{sbt_name}}
+    creates=/opt/{{sbt_name}}/sbt/bin/sbt
+
+- name: link /opt/sbt
+  file: >-
+    src=/opt/{{sbt_name}}/sbt
+    dest=/opt/sbt
+    state=link
+    owner=root
+    group=root
+
+- name: include sbt in the PATH
+  copy: >-
+    src=etc/profile.d/sbt.sh
+    dest=/etc/profile.d/sbt.sh
+    mode=0644
+    owner=root
+    group=root

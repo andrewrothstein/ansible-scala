@@ -3,11 +3,3 @@ sbt_name : 'sbt-{{sbt_ver}}'
 sbt_native_tgz : '{{sbt_name}}.tgz'
 #https://dl.bintray.com/sbt/native-packages/sbt/0.13.9/sbt-0.13.9.tgz
 sbt_native_tgz_url: '{{sbt_mirror}}/native-packages/sbt/{{sbt_ver}}/{{sbt_native_tgz}}'
-
-
-sbt_deb_name : '{{sbt_name}}.deb'
-sbt_deb_url : '{{sbt_mirror}}/debian/{{sbt_deb_name}}'
-
-sbt_rpm_name : '{{sbt_name}}.rpm'
-sbt_rpm_url : '{{sbt_mirror}}/rpm/{{sbt_ver}}/{{sbt_rpm_name}}'
-

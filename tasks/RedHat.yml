@@ -1,4 +1,0 @@
----
-- name: (RedHat) install sbt...
-  when: ansible_os_family == "RedHat"
-  yum: name='{{sbt_rpm_url}}' state=present
