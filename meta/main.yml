@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Andrew Rothstein
-  description: scala role
+  description: sbt role
   company: BlackRock
   license:
     - MIT
@@ -12,12 +12,13 @@ galaxy_info:
         - 7
     - name: Fedora
       versions:
-        - 21
+        - 23
     - name: Ubuntu
       versions:
         - trusty
+        - xenial
 
-  categories:
+  galaxy_tags:
     - development
 
 dependencies: []
