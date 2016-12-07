@@ -19,7 +19,10 @@ galaxy_info:
 
   galaxy_tags:
     - scala
+    - java
     - sbt
 
-dependencies: []
+dependencies:
+  - role: andrewrothstein.java-oracle-jre
+    version: v1.0.1
   
