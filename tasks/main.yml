@@ -33,3 +33,8 @@
     src={{sbt_target_dir}}/{{sbt_pkg_subdir}}/bin/{{item}}
     dest={{sbt_install_dir}}/{{item}}
     state=link
+
+- name: print sbt version
+  become: yes
+  become_user: root
+  command: sbt --version
