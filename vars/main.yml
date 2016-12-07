@@ -3,7 +3,7 @@ sbt_name : 'sbt-{{sbt_ver}}'
 sbt_tgz : '{{sbt_name}}.tgz'
 
 #https://dl.bintray.com/sbt/native-packages/sbt/0.13.9/sbt-0.13.9.tgz
-sbt_tgz_url: '{{sbt_mirror}}/native-packages/sbt/{{sbt_ver}}/{{sbt_native_tgz}}'
+sbt_tgz_url: '{{sbt_mirror}}/native-packages/sbt/{{sbt_ver}}/{{sbt_tgz}}'
 
 sbt_target_dir: '{{sbt_install_dir}}/{{sbt_name}}'
 sbt_pkg_subdir: 'sbt-launcher-packaging-{{sbt_ver}}'
