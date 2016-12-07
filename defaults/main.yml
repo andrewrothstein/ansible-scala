@@ -1,3 +1,4 @@
 ---
-sbt_ver : '0.13.11'
-sbt_mirror : 'http://dl.bintray.com/sbt'
+sbt_ver : '0.13.13'
+sbt_mirror : http://dl.bintray.com/sbt
+sbt_install_dir: /usr/local/bin

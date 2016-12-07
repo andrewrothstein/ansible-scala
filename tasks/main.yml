@@ -1,39 +1,35 @@
 ---
 - name: get tgz
+  become: yes
+  become_user: root
   get_url: >
-    url={{sbt_native_tgz_url}}
-    dest=/tmp/{{sbt_native_tgz}}
-    owner=root
-    group=root
+    url={{sbt_tgz_url}}
+    dest=/tmp/{{sbt_tgz}}
     mode=0644
 
-- name: mkdir /opt/sbt-XXX
+- name: mkdir sbt install dir
+  become: yes
+  become_user: root
   file: >-
-    path=/opt/{{sbt_name}}
-    owner=root
-    group=root
-    mode=0755
+    path={{sbt_target_dir}}
     state=directory
+    mode=0755
   
 - name: inflate/install
+  become: yes
+  become_user: root
   unarchive: >
     copy=no
-    src=/tmp/{{sbt_native_tgz}}
-    dest=/opt/{{sbt_name}}
-    creates=/opt/{{sbt_name}}/sbt/bin/sbt
+    src=/tmp/{{sbt_tgz}}
+    dest={{sbt_target_dir}}
+    creates={{sbt_target_dir}}/{{sbt_pkg_subdir}}
 
-- name: link /opt/sbt
+- name: link sbt...
+  become: yes
+  become_user: root
+  with_items:
+    - sbt
   file: >-
-    src=/opt/{{sbt_name}}/sbt
-    dest=/opt/sbt
+    src={{sbt_target_dir}}/{{sbt_pkg_subdir}}/bin/{{item}}
+    dest={{sbt_install_dir}}/{{item}}
     state=link
-    owner=root
-    group=root
-
-- name: include sbt in the PATH
-  copy: >-
-    src=etc/profile.d/sbt.sh
-    dest=/etc/profile.d/sbt.sh
-    mode=0644
-    owner=root
-    group=root
