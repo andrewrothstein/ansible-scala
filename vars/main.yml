@@ -5,6 +5,6 @@ sbt_tgz : '{{sbt_name}}.tgz'
 #https://dl.bintray.com/sbt/native-packages/sbt/0.13.13/sbt-0.13.13.tgz
 sbt_tgz_url: '{{sbt_mirror}}/native-packages/sbt/{{sbt_ver}}/{{sbt_tgz}}'
 
-sbt_install_dir: '{{sbt_install_dir}}/sbt-launcher-packaging-{{sbt_ver}}'
+sbt_install_dir: '{{sbt_install_parent_dir}}/sbt-launcher-packaging-{{sbt_ver}}'
 
 sbt_link_target_dir: '{{sbt_install_parent_dir}}/bin'

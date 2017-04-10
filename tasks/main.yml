@@ -30,4 +30,4 @@
 - name: trigger sbt bootstrap...
   become: yes
   become_user: root
-  command: sbt -Dsbt.version={{sbt_ver}} compile
+  command: '{{sbt_link_target_dir}}/sbt -Dsbt.version={{sbt_ver}} compile'
