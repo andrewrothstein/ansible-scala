@@ -1,4 +1,6 @@
 ---
 sbt_ver : '0.13.13'
+sbt_tgz_checksum: sha256:40d03d21a260c5a6a43f8349298f41c9d047f97972057d9d915afd8945faf979
 sbt_mirror : http://dl.bintray.com/sbt
-sbt_install_dir: /usr/local/bin
+sbt_install_parent_dir: /usr/local
+
