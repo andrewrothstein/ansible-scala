@@ -1,8 +1,8 @@
 ---
-sbt_name : 'sbt-{{sbt_ver}}'
+sbt_name : sbt-{{sbt_ver}}
 sbt_tgz : '{{sbt_name}}.tgz'
 
-#https://dl.bintray.com/sbt/native-packages/sbt/0.13.13/sbt-0.13.13.tgz
+#https://dl.bintray.com/sbt/native-packages/sbt/0.13.15/sbt-0.13.15.tgz
 sbt_tgz_url: '{{sbt_mirror}}/native-packages/sbt/{{sbt_ver}}/{{sbt_tgz}}'
 
 sbt_install_dir: '{{sbt_install_parent_dir}}/sbt-launcher-packaging-{{sbt_ver}}'
