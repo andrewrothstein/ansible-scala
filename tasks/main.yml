@@ -8,20 +8,28 @@
     checksum: '{{sbt_tgz_checksum}}'
     mode: 0644
 
+- name: make install dir
+  become: yes
+  become_user: root
+  file:
+    path: '{{sbt_install_dir}}'
+    state: directory
+    mode: 0755
+
 - name: inflate/install
   become: yes
   become_user: root
   unarchive:
     copy: no
     src: /tmp/{{sbt_tgz}}
-    dest: '{{sbt_install_parent_dir}}'
-    creates: '{{sbt_install_dir}}'
+    dest: '{{sbt_install_dir}}'
+    creates: '{{sbt_install_subdir}}'
 
 - name: link sbt...
   become: yes
   become_user: root
   file:
-    src: '{{sbt_install_dir}}'
+    src: '{{sbt_install_subdir}}'
     dest: '{{sbt_link_dir}}'
     state: link
 
