@@ -20,14 +20,24 @@
 - name: link sbt...
   become: yes
   become_user: root
-  with_items:
-    - sbt
   file:
-    src: '{{sbt_install_dir}}/bin/{{item}}'
-    dest: '{{sbt_link_target_dir}}/{{item}}'
+    src: '{{sbt_install_dir}}'
+    dest: '{{sbt_link_dir}}'
     state: link
+
+- name: add sbt to the default path...
+  become: yes
+  become_user: root
+  with_items:
+    - f: sbt.sh
+      d: /etc/profile.d
+      m: '0644'
+  template:
+    src: '{{item.f}}.j2'
+    dest: '{{item.d}}/{{item.f}}'
+    mode: '{{item.m}}'
 
 - name: trigger sbt bootstrap...
   become: yes
   become_user: root
-  command: '{{sbt_link_target_dir}}/sbt -Dsbt.version={{sbt_ver}} compile'
+  command: '{{sbt_link_dir}}/bin/sbt -Dsbt.version={{sbt_ver}} compile'
