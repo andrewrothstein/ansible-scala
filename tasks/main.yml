@@ -44,8 +44,3 @@
     src: '{{item.f}}.j2'
     dest: '{{item.d}}/{{item.f}}'
     mode: '{{item.m}}'
-
-- name: trigger sbt bootstrap...
-  become: yes
-  become_user: root
-  command: '{{sbt_link_dir}}/bin/sbt -Dsbt.version={{sbt_ver}} compile'
