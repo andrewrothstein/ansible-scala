@@ -2,7 +2,7 @@ andrewrothstein.scala
 ===========================
 [![Build Status](https://travis-ci.org/andrewrothstein/ansible-scala.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-scala)
 
-A role for installing [sbt](http://www.scala-sbt.org/).
+Installs [sbt](http://www.scala-sbt.org/) and bootstraps the compiler front-end.
 
 Requirements
 ------------
