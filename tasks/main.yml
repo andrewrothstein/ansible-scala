@@ -44,3 +44,8 @@
     src: '{{item.f}}.j2'
     dest: '{{item.d}}/{{item.f}}'
     mode: '{{item.m}}'
+
+- name: bootstrap sbt...
+  become: yes
+  become_user: root
+  command: '{{sbt_install_subdir}}/bin/sbt exit'
