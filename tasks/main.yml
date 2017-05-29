@@ -48,4 +48,4 @@
 - name: bootstrap sbt...
   become: yes
   become_user: root
-  command: '{{sbt_install_subdir}}/bin/sbt exit'
+  command: bash -l -c 'sbt exit'
