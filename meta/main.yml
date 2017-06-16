@@ -28,10 +28,10 @@ galaxy_info:
     - sbt
 
 dependencies:
-  - role: andrewrothstein.bash
+  - src: andrewrothstein.bash
     version: v1.0.1
-  - role: andrewrothstein.unarchive-deps
+  - src: andrewrothstein.unarchive-deps
     version: v1.0.8
-  - role: andrewrothstein.java-oracle-jdk
-    version: v2.0.0
+  - src: andrewrothstein.java-oracle-jdk
+    version: v2.0.2
   
