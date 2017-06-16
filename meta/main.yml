@@ -33,5 +33,6 @@ dependencies:
   - src: andrewrothstein.unarchive-deps
     version: v1.0.8
   - src: andrewrothstein.java-oracle-jdk
-    version: v2.0.2
+    version: v2.0.3
+    java_oracle_cleanup: '{{sbt_cleanup|default(False)}}'
   

@@ -49,3 +49,10 @@
   become: yes
   become_user: root
   command: bash -l -c 'sbt exit'
+
+- name: cleanup...
+  become: yes
+  become_user: root
+  file:
+    path: /tmp/{{sbt_tgz}}
+    state: absent
