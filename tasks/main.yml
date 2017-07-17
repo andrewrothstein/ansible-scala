@@ -20,7 +20,7 @@
   become: yes
   become_user: root
   unarchive:
-    remote_src: no
+    remote_src: yes
     src: /tmp/{{sbt_tgz}}
     dest: '{{sbt_install_dir}}'
     creates: '{{sbt_install_subdir}}'
