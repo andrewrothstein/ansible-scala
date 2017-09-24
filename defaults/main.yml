@@ -1,6 +1,6 @@
 ---
-sbt_ver : '1.0.0'
-sbt_tgz_checksum: sha256:9ae04f4972145f2ac56c4deb868c9a5bb8b8b85c5151885dff3b997712645c5a
+sbt_ver : '1.0.2'
+sbt_tgz_checksum: sha256:c3f063d8122d87f0d80b25221d76b0a164e9247d35190f31ec360edcb4352ef0
 sbt_mirror : https://github.com/sbt/sbt/releases/download
 sbt_install_parent_dir: /usr/local
 sbt_cleanup: False
