@@ -6,4 +6,7 @@ sbt_tgz_url: '{{sbt_mirror}}/v{{sbt_ver}}/{{sbt_tgz}}'
 
 sbt_install_dir: '{{sbt_install_parent_dir}}/sbt-{{sbt_ver}}'
 sbt_install_subdir: '{{sbt_install_dir}}/sbt'
+
 sbt_link_dir: '{{sbt_install_parent_dir}}/sbt'
+
+sbt_tgz_checksum: '{{sbt_tgz_checksums[sbt_ver]}}'
