@@ -1,13 +1,4 @@
 ---
-- name: get tgz
-  become: yes
-  become_user: root
-  get_url:
-    url: '{{sbt_tgz_url}}'
-    dest: /tmp/{{sbt_tgz}}
-    checksum: '{{sbt_tgz_checksum}}'
-    mode: 0644
-
 - name: make install dir
   become: yes
   become_user: root
@@ -16,15 +7,39 @@
     state: directory
     mode: 0755
 
-- name: inflate/install
+- name: check for sbt intallation...
   become: yes
-  become_user: root
-  unarchive:
-    remote_src: yes
-    src: /tmp/{{sbt_tgz}}
-    dest: '{{sbt_install_dir}}'
-    creates: '{{sbt_install_subdir}}'
+  stat:
+    path: '{{sbt_install_subdir}}'
+  change_when: false
+  register: sbt_binary
+- when: not sbt_binary.stat.exists
+  block:
+    - name: get tgz
+      become: yes
+      become_user: root
+      get_url:
+        url: '{{sbt_tgz_url}}'
+        dest: /tmp/{{sbt_tgz}}
+        checksum: '{{sbt_tgz_checksum}}'
+        mode: 0644
 
+    - name: inflate/install
+      become: yes
+      become_user: root
+      unarchive:
+        remote_src: yes
+        src: /tmp/{{sbt_tgz}}
+        dest: '{{sbt_install_dir}}'
+        creates: '{{sbt_install_subdir}}'
+  always:
+    - name: cleanup...
+      become: yes
+      become_user: root
+      file:
+        path: /tmp/{{sbt_tgz}}
+        state: absent
+        
 - name: link sbt...
   become: yes
   become_user: root
@@ -49,9 +64,3 @@
   become_user: root
   command: bash -l -c 'sbt exit'
 
-- name: cleanup...
-  become: yes
-  become_user: root
-  file:
-    path: /tmp/{{sbt_tgz}}
-    state: absent
