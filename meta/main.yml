@@ -29,8 +29,8 @@ galaxy_info:
 
 dependencies:
   - src: andrewrothstein.bash
-    version: v1.1.0
+    version: v1.1.1
   - src: andrewrothstein.unarchive-deps
     version: v1.0.9
   - src: andrewrothstein.java-oracle-jdk
-    version: v2.0.5
+    version: v2.0.6
