@@ -1,6 +1,6 @@
 ---
-sbt_name : sbt-{{sbt_ver}}
-sbt_tgz : '{{sbt_name}}.tgz'
+sbt_name: sbt-{{sbt_ver}}
+sbt_tgz: '{{sbt_name}}.tgz'
 
 sbt_tgz_url: '{{sbt_mirror}}/v{{sbt_ver}}/{{sbt_tgz}}'
 
