@@ -25,6 +25,6 @@ sbt_tgz_checksums:
   # https://github.com/sbt/sbt/releases/download/v1.2.3/sbt-1.2.3.tgz
   '1.2.3': sha256:d502fbe587a6c2181d6acc688741ae4131386bb10ca50c73c923effc60bafeeb
   # https://github.com/sbt/sbt/releases/download/v1.2.4/sbt-1.2.4.tgz
-  '1.2.3': sha256:36db5a4cbad1d39fb01978a09007b9d833c9172d9cd4a3b08180c24c6a0dfb1b
+  '1.2.4': sha256:36db5a4cbad1d39fb01978a09007b9d833c9172d9cd4a3b08180c24c6a0dfb1b
 
 sbt_install_parent_dir: /usr/local
