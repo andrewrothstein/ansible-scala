@@ -3,3 +3,4 @@
 Dockerfile.*
 requirements.yml
 *.tgz
+**.swp

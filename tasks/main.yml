@@ -3,14 +3,14 @@
   become: yes
   become_user: root
   file:
-    path: '{{sbt_install_dir}}'
+    path: '{{ sbt_install_dir }}'
     state: directory
     mode: 0755
 
 - name: check for sbt intallation...
   become: yes
   stat:
-    path: '{{sbt_install_subdir}}'
+    path: '{{ sbt_install_subdir }}'
   changed_when: false
   register: sbt_binary
 - when: not sbt_binary.stat.exists
@@ -19,9 +19,9 @@
       become: yes
       become_user: root
       get_url:
-        url: '{{sbt_tgz_url}}'
-        dest: /tmp/{{sbt_tgz}}
-        checksum: '{{sbt_tgz_checksum}}'
+        url: '{{ sbt_tgz_url }}'
+        dest: /tmp/{{ sbt_tgz }}
+        checksum: '{{ sbt_tgz_checksum }}'
         mode: 0644
 
     - name: inflate/install
@@ -29,23 +29,22 @@
       become_user: root
       unarchive:
         remote_src: yes
-        src: /tmp/{{sbt_tgz}}
-        dest: '{{sbt_install_dir}}'
-        creates: '{{sbt_install_subdir}}'
+        src: /tmp/{{ sbt_tgz }}
+        dest: '{{ sbt_install_dir }}'
+        creates: '{{ sbt_install_subdir }}'
   always:
     - name: cleanup...
       become: yes
       become_user: root
       file:
-        path: /tmp/{{sbt_tgz}}
+        path: /tmp/{{ sbt_tgz }}
         state: absent
-        
 - name: link sbt...
   become: yes
   become_user: root
   file:
-    src: '{{sbt_install_subdir}}'
-    dest: '{{sbt_link_dir}}'
+    src: '{{ sbt_install_subdir }}'
+    dest: '{{ sbt_link_dir }}'
     state: link
 
 - name: add sbt to the default path...
@@ -55,9 +54,9 @@
     - f: sbt.sh
       d: /etc/profile.d
   template:
-    src: '{{item.f}}.j2'
-    dest: '{{item.d}}/{{item.f}}'
-    mode: '{{item.m|default("0644")}}'
+    src: '{{ item.f }}.j2'
+    dest: '{{ item.d }}/{{ item.f }}'
+    mode: '{{ item.m|default("0644") }}'
 
 - name: bootstrap sbt...
   become: yes
