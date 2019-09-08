@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-VER=1.2.8
+VER=1.3.0
 DIR=~/Downloads
 FILE=sbt-${VER}.tgz
 URL=https://github.com/sbt/sbt/releases/download/v${VER}/$FILE
