@@ -1,11 +1,11 @@
 dependencies:
 - role: andrewrothstein.bash
-  version: v1.1.4
+  version: v1.1.6
 - role: andrewrothstein.unarchive-deps
-  version: v1.1.2
+  version: v1.1.5
 - openjdk_app: jdk
   role: andrewrothstein.openjdk
-  version: v2.0.4
+  version: v2.0.8
 galaxy_info:
   author: Andrew Rothstein
   company: BlackRock
@@ -18,18 +18,26 @@ galaxy_info:
   - MIT
   min_ansible_version: 1.2
   platforms:
+  - name: Alpine
+    version:
+    - all
+  - name: Debian
+    version:
+    - buster
+    - stretch
   - name: EL
     versions:
-    - all
+    - 7
+    - 8
   - name: Fedora
+    versions:
+    - 31
+    - 32
+  - name: Gentoo
     versions:
     - all
   - name: Ubuntu
     versions:
-    - all
-  - name: Debian
-    version:
-    - jessie
-  - name: Alpine
-    version:
-    - all
+    - bionic
+    - focal
+    - xenial
