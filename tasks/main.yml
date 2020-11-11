@@ -1,5 +1,5 @@
 ---
-- name: make install dir
+- name: mkdir {{ sbt_install_dir }}
   become: yes
   become_user: root
   file:
@@ -7,7 +7,7 @@
     state: directory
     mode: 0755
 
-- name: check for sbt intallation...
+- name: check for sbt installation at {{ sbt_install_subdir }}
   become: yes
   stat:
     path: '{{ sbt_install_subdir }}'
@@ -15,31 +15,31 @@
   register: sbt_binary
 - when: not sbt_binary.stat.exists
   block:
-    - name: get tgz
+    - name: downloading {{ sbt_tgz_url }} to {{ sbt_tmp_tgz }}
       become: yes
       become_user: root
       get_url:
         url: '{{ sbt_tgz_url }}'
-        dest: /tmp/{{ sbt_tgz }}
+        dest: '{{ sbt_tmp_tgz }}'
         checksum: '{{ sbt_tgz_checksum }}'
         mode: 0644
 
-    - name: inflate/install
+    - name: unarchiving {{ sbt_tmp_tgz }} into {{ sbt_install_dir }}
       become: yes
       become_user: root
       unarchive:
         remote_src: yes
-        src: /tmp/{{ sbt_tgz }}
+        src: '{{ sbt_tmp_tgz }}'
         dest: '{{ sbt_install_dir }}'
         creates: '{{ sbt_install_subdir }}'
   always:
-    - name: cleanup...
+    - name: rm {{ sbt_tmp_tgz }}
       become: yes
       become_user: root
       file:
-        path: /tmp/{{ sbt_tgz }}
+        path: '{{ sbt_tmp_tgz }}'
         state: absent
-- name: link sbt...
+- name: linking directory {{ sbt_link_dir }} to {{ sbt_install_subdir }}
   become: yes
   become_user: root
   file:
@@ -47,7 +47,7 @@
     dest: '{{ sbt_link_dir }}'
     state: link
 
-- name: add sbt to the default path...
+- name: adding sbt to the default path...
   become: yes
   become_user: root
   with_items:
@@ -57,8 +57,3 @@
     src: '{{ item.f }}.j2'
     dest: '{{ item.d }}/{{ item.f }}'
     mode: '{{ item.m|default("0644") }}'
-
-- name: bootstrap sbt...
-  become: yes
-  become_user: root
-  command: bash -l -c 'sbt exit'

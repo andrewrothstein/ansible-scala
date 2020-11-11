@@ -2,3 +2,9 @@
 - hosts: all
   roles:
     - role: '{{playbook_dir}}'
+  tasks:
+    - name: bootstrapping/checking version
+      command: bash -l -c 'sbt --version'
+      register: sbt_test_output
+    - debug:
+        msg: '{{ sbt_test_output.stdout }}'
