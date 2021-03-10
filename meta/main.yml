@@ -5,7 +5,7 @@ dependencies:
   version: v1.1.5
 - openjdk_app: jdk
   role: andrewrothstein.openjdk
-  version: v2.0.10
+  version: v2.0.14
 galaxy_info:
   author: Andrew Rothstein
   company: BlackRock
@@ -26,6 +26,7 @@ galaxy_info:
     - all
   - name: Debian
     version:
+    - bullseye
     - buster
     - stretch
   - name: EL
