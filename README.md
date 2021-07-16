@@ -1,6 +1,6 @@
 andrewrothstein.scala
 ===========================
-[![Build Status](https://travis-ci.org/andrewrothstein/ansible-scala.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-scala)
+![Build Status](https://github.com/andrewrothstein/ansible-kubectl/actions/workflows/build.yml/badge.svg)
 
 Installs [sbt](http://www.scala-sbt.org/) and bootstraps the compiler front-end.
 
