@@ -1,5 +1,5 @@
 ---
-sbt_ver: 1.5.5
+sbt_ver: 1.6.1
 sbt_mirror: https://github.com/sbt/sbt/releases/download
 sbt_install_parent_dir: /usr/local
 sbt_tgz_checksums:
@@ -91,3 +91,13 @@ sbt_tgz_checksums:
   '1.5.4': sha256:8e173aba17690be9b60f941990bb54b6755eb09e8b1cf445a03da6fe19a1b20c
   # https://github.com/sbt/sbt/releases/download/v1.5.5/sbt-1.5.5.tgz
   '1.5.5': sha256:c0fcd50cf5c91ed27ad01c5c6a8717b62700c87a50ff9b0e7573b227acb2b3c9
+  # https://github.com/sbt/sbt/releases/download/v1.5.6/sbt-1.5.6.tgz
+  '1.5.6': sha256:3c2d2774992fe27348759302b59862dd7469fdd4655d7c75c87bcaf1b0302068
+  # https://github.com/sbt/sbt/releases/download/v1.5.7/sbt-1.5.7.tgz
+  '1.5.7': sha256:e9d9c6d360346b3a7272c7dd40eca1f462dec2f7b3665decf1eb2622a5897c19
+  # https://github.com/sbt/sbt/releases/download/v1.5.8/sbt-1.5.8.tgz
+  '1.5.8': sha256:5a74f752b7dc200b3b1d1c515327f01c21fef833e95738de42c242fb7840d489
+  # https://github.com/sbt/sbt/releases/download/v1.6.0/sbt-1.6.0.tgz
+  '1.6.0': sha256:639db170f6510d0f885ff40054644e0ec85bb836f9a09038e6bf4e4f6271bacc
+  # https://github.com/sbt/sbt/releases/download/v1.6.1/sbt-1.6.1.tgz
+  '1.6.1': sha256:60286bf1b875b31e2955f8a699888cd2612e9afd94d03cde0a2e71efd7492ffc
