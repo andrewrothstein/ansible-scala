@@ -1,7 +1,4 @@
-**~
-*.retry
+**~*.retry
 Dockerfile.*
 requirements.yml
-*.tgz
-**.swp
-project/
+!meta/requirements.yml
