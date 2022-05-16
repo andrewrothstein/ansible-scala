@@ -11,7 +11,7 @@ dl_ver()
 
     if [ ! -e $lfile ];
     then
-        wget -q -O $lfile $url
+        curl -sSLf -o $lfile $url
     fi
 
     printf "  # %s\n" $url

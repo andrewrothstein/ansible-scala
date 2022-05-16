@@ -6,5 +6,6 @@
     - name: bootstrapping/checking version
       command: bash -l -c 'sbt --version'
       register: sbt_test_output
-    - debug:
+    - name: sbt --version
+      debug:
         msg: '{{ sbt_test_output.stdout }}'
