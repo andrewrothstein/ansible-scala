@@ -37,3 +37,4 @@ galaxy_info:
     versions:
     - bionic
     - focal
+    - jammy
