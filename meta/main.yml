@@ -4,32 +4,32 @@ galaxy_info:
   company: BlackRock
   description: sbt role
   galaxy_tags:
-  - scala
-  - java
-  - sbt
-  license:
-  - MIT
-  min_ansible_version: 1.2
+    - scala
+    - java
+    - sbt
+  license: MIT
+  min_ansible_version: '1.2'
   platforms:
-  - name: Alpine
-    version:
-    - all
-  - name: Archlinux
-    version:
-    - all
-  - name: Debian
-    version:
-    - bookworm
-    - bullseye
-  - name: EL
-    versions:
-    - 8
-    - 9
-  - name: Fedora
-    versions:
-    - 37
-    - 38
-  - name: Ubuntu
-    versions:
-    - focal
-    - jammy
+    - name: Alpine
+      version:
+        - all
+    - name: Archlinux
+      version:
+        - all
+    - name: Debian
+      version:
+        - bookworm
+        - bullseye
+    - name: EL
+      versions:
+        - 8
+        - 9
+    - name: Fedora
+      versions:
+        - 38
+        - 39
+    - name: Ubuntu
+      versions:
+        - focal
+        - jammy
+  role_name: scala
