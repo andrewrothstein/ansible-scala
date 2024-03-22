@@ -6,6 +6,7 @@
   tasks:
     - name: Bootstrapping/checking version
       ansible.builtin.command: bash -lc 'sbt --version'
+      changed_when: false
       register: sbt_test_output
     - name: Output of 'sbt --version'
       ansible.builtin.debug:
