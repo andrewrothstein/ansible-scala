@@ -9,25 +9,26 @@ galaxy_info:
     - sbt
   license: MIT
   min_ansible_version: '1.2'
+  namespace: andrewrothstein
   platforms:
     - name: Alpine
-      version:
+      versions:
         - all
-    - name: Archlinux
-      version:
+    - name: ArchLinux
+      versions:
         - all
     - name: Debian
-      version:
+      versions:
         - bookworm
         - bullseye
     - name: EL
       versions:
-        - 8
-        - 9
+        - '8'
+        - '9'
     - name: Fedora
       versions:
-        - 38
-        - 39
+        - '38'
+        - '39'
     - name: Ubuntu
       versions:
         - focal

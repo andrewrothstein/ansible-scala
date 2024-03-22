@@ -1,67 +1,72 @@
 ---
-- include_role:
+- name: Installing andrewrothstein.bash
+  ansible.builtin.include_role:
     name: andrewrothstein.bash
-- include_role:
+- name: Installing andrewrothstein.unarchivedeps
+  ansible.builtin.include_role:
     name: andrewrothstein.unarchivedeps
-- include_role:
+- name: Installing andrewrothstein.temurin
+  ansible.builtin.include_role:
     name: andrewrothstein.temurin
   vars:
     openjdk_app: jdk
-- name: mkdir {{ sbt_install_dir }}
+
+- name: Mkdir {{ sbt_install_dir }}
   become: true
   become_user: root
-  file:
+  ansible.builtin.file:
     path: '{{ sbt_install_dir }}'
     state: directory
-    mode: 0755
+    mode: '755'
 
-- name: check for sbt installation at {{ sbt_install_subdir }}
+- name: Check for sbt installation at {{ sbt_install_subdir }}
   become: true
-  stat:
+  ansible.builtin.stat:
     path: '{{ sbt_install_subdir }}'
   changed_when: false
   register: sbt_binary
-- when: not sbt_binary.stat.exists
+- name: Downloading and installing sbt
+  when: not sbt_binary.stat.exists
   block:
-    - name: downloading {{ sbt_tgz_url }} to {{ sbt_tmp_tgz }}
+    - name: Downloading {{ sbt_tgz_url }} to {{ sbt_tmp_tgz }}
       become: true
       become_user: root
-      get_url:
+      ansible.builtin.get_url:
         url: '{{ sbt_tgz_url }}'
         dest: '{{ sbt_tmp_tgz }}'
         checksum: '{{ sbt_tgz_checksum }}'
-        mode: 0644
+        mode: '644'
 
-    - name: unarchiving {{ sbt_tmp_tgz }} into {{ sbt_install_dir }}
+    - name: Unarchiving {{ sbt_tmp_tgz }} into {{ sbt_install_dir }}
       become: true
       become_user: root
-      unarchive:
+      ansible.builtin.unarchive:
         remote_src: true
         src: '{{ sbt_tmp_tgz }}'
         dest: '{{ sbt_install_dir }}'
         creates: '{{ sbt_install_subdir }}'
   always:
-    - name: rm {{ sbt_tmp_tgz }}
+    - name: Rm {{ sbt_tmp_tgz }}
       become: true
       become_user: root
-      file:
+      ansible.builtin.file:
         path: '{{ sbt_tmp_tgz }}'
         state: absent
-- name: linking directory {{ sbt_link_dir }} to {{ sbt_install_subdir }}
+- name: Linking directory {{ sbt_link_dir }} to {{ sbt_install_subdir }}
   become: true
   become_user: root
-  file:
+  ansible.builtin.file:
     src: '{{ sbt_install_subdir }}'
     dest: '{{ sbt_link_dir }}'
     state: link
 
-- name: adding sbt to the default path...
+- name: Adding sbt to the default path...
   become: true
   become_user: root
   with_items:
     - f: sbt.sh
       d: /etc/profile.d
-  template:
+  ansible.builtin.template:
     src: '{{ item.f }}.j2'
     dest: '{{ item.d }}/{{ item.f }}'
-    mode: '{{ item.m|default("0644") }}'
+    mode: '{{ item.m | default("644") }}'

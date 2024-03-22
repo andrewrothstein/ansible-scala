@@ -1,11 +1,12 @@
 ---
-- hosts: all
+- name: Testing andrewrothstein.scala
+  hosts: all
   roles:
     - role: '{{ playbook_dir }}'
   tasks:
-    - name: bootstrapping/checking version
-      command: bash -l -c 'sbt --version'
+    - name: Bootstrapping/checking version
+      ansible.builtin.command: bash -lc 'sbt --version'
       register: sbt_test_output
-    - name: sbt --version
-      debug:
+    - name: Output of 'sbt --version'
+      ansible.builtin.debug:
         msg: '{{ sbt_test_output.stdout }}'
