@@ -9,7 +9,7 @@
   ansible.builtin.include_role:
     name: andrewrothstein.temurin
   vars:
-    openjdk_app: jdk
+    temurin_app: jdk
 
 - name: Mkdir {{ sbt_install_dir }}
   become: true
